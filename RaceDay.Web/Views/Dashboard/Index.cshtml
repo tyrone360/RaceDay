@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Organiser Dashboard";
+}
+
+<div class="container mt-4">
+    <h1>Organiser Dashboard</h1>
+
+    <p>Welcome to the RaceDay management system.</p>
+
+    <hr />
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4>Events</h4>
+                <p>Manage your race events.</p>
+                <a asp-controller="Events"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    Manage Events
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4>Categories</h4>
+                <p>Manage event categories.</p>
+                <a asp-controller="Categories"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    Manage Categories
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4>Enrolments</h4>
+                <p>View event enrolments.</p>
+                <a asp-controller="EventEnrollment"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    View Enrolments
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4>Location Management</h4>
+                <p>Manage race locations.</p>
+                <a asp-controller="Location"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    Manage Locations
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card p-3 mb-3">
+                <h4>Results Management</h4>
+                <p>View, add, edit and manage race results.</p>
+                <a asp-controller="Results"
+                   asp-action="Index"
+                   class="btn btn-primary">
+                    Manage Results
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

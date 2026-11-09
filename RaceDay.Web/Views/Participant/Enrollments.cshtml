@@ -1,0 +1,83 @@
+﻿
+@model IEnumerable<RaceDay.Web.Models.Enrollment>
+
+@{
+    ViewData["Title"] = "My Enrollments";
+}
+
+<div class="enrollments-page">
+
+    <div class="enrollments-heading">
+        <div>
+            <span class="hero-label">PARTICIPANT PORTAL</span>
+            <h1>My Enrollments</h1>
+            <p>Manage and track the events you have enrolled in.</p>
+        </div>
+
+        <div class="enrollment-count">
+            <span>@(Model?.Count() ?? 0)</span>
+            <small>Total Enrollments</small>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="enrollment-table-card">
+            <div class="table-heading">
+                <h4>Enrollment Overview</h4>
+                <span>YOUR REGISTRATION RECORDS</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table enrollment-table">
+                    <thead>
+                        <tr>
+                            <th>Enrollment ID</th>
+                            <th>Event ID</th>
+                            <th>User ID</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var enrollment in Model)
+                        {
+                            <tr>
+                                <td>#@enrollment.EnrollmentID</td>
+                                <td>@enrollment.EventID</td>
+                                <td>@enrollment.UserID</td>
+                                <td>
+                                    <span class="enrollment-status">
+                                        Registered
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="empty-enrollments">
+            <h3>No Enrollments Yet</h3>
+            <p>You haven't registered for any events. Explore available events to get started.</p>
+
+            <a asp-controller="Participant"
+               asp-action="Events"
+               class="btn btn-primary">
+                Explore Events
+            </a>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-controller="Participant"
+           asp-action="Index"
+           class="btn btn-outline-primary">
+            ← Back to Dashboard
+        </a>
+    </div>
+
+</div>

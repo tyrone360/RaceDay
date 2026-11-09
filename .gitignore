@@ -1,0 +1,20 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Build output
+**/bin/
+**/obj/
+**/TestResults/
+
+# Local configuration and secrets
+**/appsettings.json
+**/appsettings.Development.json
+
+# Uploaded profile pictures
+RaceDay.Web/wwwroot/uploads/profiles/*
+
+# Operating system
+.DS_Store
+Thumbs.db

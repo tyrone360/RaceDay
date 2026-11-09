@@ -1,0 +1,94 @@
+﻿@model RaceDay.Web.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-brand">
+            <div class="login-logo">R</div>
+            <h2>RACEDAY</h2>
+            <span>PARTICIPANT PORTAL</span>
+        </div>
+
+        <div class="login-heading">
+            <h3>Welcome Back</h3>
+            <p>Sign in to access your RaceDay account.</p>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.Error
+            </div>
+        }
+
+        <form asp-controller="Login" asp-action="Index" method="post">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3">
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Email" class="form-label">
+                    Email Address
+                </label>
+
+                <input asp-for="Email"
+                       class="form-control login-input"
+                       placeholder="Enter your email address" />
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="Password" class="form-label">
+                    Password
+                </label>
+
+                <input asp-for="Password"
+                       class="form-control login-input"
+                       placeholder="Enter your password" />
+
+                <span asp-validation-for="Password"
+                      class="text-danger">
+                </span>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-primary login-button">
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="login-footer">
+            <p>Welcome to RaceDay. Your next challenge awaits.</p>
+
+            <p>
+                Don't have an account?
+                <a asp-controller="Register" asp-action="Index">
+                    Create Account
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

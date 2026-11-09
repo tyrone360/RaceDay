@@ -1,0 +1,116 @@
+﻿
+@{
+    ViewData["Title"] = "Participant Dashboard";
+}
+
+<div class="dashboard-page">
+
+    <section class="dashboard-welcome">
+        <div>
+            <span class="hero-label">PARTICIPANT PORTAL</span>
+
+            <h1>
+                Welcome back,<br />
+                <span>@ViewBag.FirstName @ViewBag.LastName</span>
+            </h1>
+
+            <p>
+                Your next challenge starts here.
+                Explore events, manage your enrolments and track your results.
+            </p>
+        </div>
+
+        <div class="dashboard-symbol">
+            RD
+        </div>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="dashboard-section-heading">
+            <div>
+                <span class="hero-label">YOUR ACTIVITIES</span>
+                <h2>Participant Dashboard</h2>
+            </div>
+        </div>
+
+        <div class="row g-4">
+
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">01</div>
+                    <h4>Upcoming Events</h4>
+                    <p>
+                        Discover available sporting events and find your next challenge.
+                    </p>
+
+                    <a asp-controller="Participant"
+                       asp-action="Events"
+                       class="dashboard-link">
+                        Explore Events <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">02</div>
+                    <h4>My Enrollments</h4>
+                    <p>
+                        Keep track of the events you have registered to participate in.
+                    </p>
+
+                    <a asp-controller="Participant"
+                       asp-action="Enrollments"
+                       class="dashboard-link">
+                        View Enrollments <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">03</div>
+                    <h4>My Results</h4>
+                    <p>
+                        Check your recorded race positions and follow your progress.
+                    </p>
+
+                    <a asp-controller="Participant"
+                       asp-action="Results"
+                       class="dashboard-link">
+                        View Results <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-icon">04</div>
+                    <h4>My Profile</h4>
+                    <p>
+                        Update your personal information and manage your profile picture.
+                    </p>
+
+                    <a asp-controller="Profile"
+                       asp-action="Index"
+                       class="dashboard-link">
+                        Manage Profile <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="dashboard-bottom">
+        <h3>READY FOR YOUR NEXT CHALLENGE?</h3>
+        <p>Discover an event, register and make your mark.</p>
+
+        <a asp-controller="Participant"
+           asp-action="Events"
+           class="btn btn-primary btn-lg">
+            Find Your Next Event
+        </a>
+    </section>
+
+</div>

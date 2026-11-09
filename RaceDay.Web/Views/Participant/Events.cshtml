@@ -1,0 +1,91 @@
+﻿```cshtml
+@model IEnumerable<RaceDay.Web.Models.Event>
+
+@{
+    ViewData["Title"] = "Available Events";
+}
+
+<div class="events-page">
+
+    <div class="events-heading">
+        <div>
+            <span class="hero-label">DISCOVER & COMPETE</span>
+            <h1>Available Events</h1>
+            <p>Find your next challenge and be part of something great.</p>
+        </div>
+
+        <div class="events-count">
+            <span>@(Model?.Count() ?? 0)</span>
+            <small>Available Events</small>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row g-4">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="event-card h-100">
+
+                        <div class="event-card-top">
+                            <span class="event-tag">RACEDAY EVENT</span>
+                            <span class="event-indicator"></span>
+                        </div>
+
+                        <div class="event-card-body">
+                            <h3>@item.EventName</h3>
+
+                            <div class="event-detail">
+                                <span class="detail-icon">📅</span>
+                                <div>
+                                    <small>EVENT DATE</small>
+                                    <p>@item.EventDate.ToString("dd MMMM yyyy")</p>
+                                </div>
+                            </div>
+
+                            <div class="event-detail">
+                                <span class="detail-icon">🏆</span>
+                                <div>
+                                    <small>CATEGORY</small>
+                                    <p>@(item.CategoryName ?? "Not assigned")</p>
+                                </div>
+                            </div>
+
+                            <div class="event-detail">
+                                <span class="detail-icon">📍</span>
+                                <div>
+                                    <small>LOCATION</small>
+                                    <p>@(item.LocationName ?? "Not assigned")</p>
+                                </div>
+                            </div>
+
+                            <div class="event-address">
+                                <small>ADDRESS</small>
+                                <p>@(item.Address ?? "Not available")</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="empty-events">
+            <h3>No events available</h3>
+            <p>There are currently no events to display. Check again later.</p>
+        </div>
+    }
+
+    <div class="mt-5">
+        <a asp-controller="Participant"
+           asp-action="Index"
+           class="btn btn-outline-primary">
+            ← Back to Dashboard
+        </a>
+    </div>
+
+</div>
+```

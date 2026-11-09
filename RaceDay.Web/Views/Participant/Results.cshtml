@@ -1,0 +1,104 @@
+﻿
+@model IEnumerable<RaceDay.Web.Models.Result>
+
+@{
+    ViewData["Title"] = "My Results";
+}
+
+<div class="results-page">
+
+    <div class="results-heading">
+        <div>
+            <span class="hero-label">PERFORMANCE TRACKER</span>
+            <h1>My Results</h1>
+            <p>Review your recorded positions and track your race performance.</p>
+        </div>
+
+        <div class="results-count">
+            <span>@(Model?.Count() ?? 0)</span>
+            <small>Recorded Results</small>
+        </div>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="results-table-card">
+
+            <div class="results-table-heading">
+                <h4>Performance Overview</h4>
+                <span>YOUR RACE RECORDS</span>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table results-table">
+                    <thead>
+                        <tr>
+                            <th>Result ID</th>
+                            <th>Enrollment ID</th>
+                            <th>Position</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var result in Model)
+                        {
+                            <tr>
+                                <td>#@result.ResultID</td>
+                                <td>@result.EnrollmentID</td>
+                                <td>
+                                    <span class="position-badge">
+                                        @result.Position
+                                    </span>
+                                </td>
+                                <td>
+                                    @if (result.Position == 1)
+                                    {
+                                        <span class="performance-label">1st Place</span>
+                                    }
+                                    else if (result.Position == 2)
+                                    {
+                                        <span class="performance-label">2nd Place</span>
+                                    }
+                                    else if (result.Position == 3)
+                                    {
+                                        <span class="performance-label">3rd Place</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="performance-label">
+                                            Position @result.Position
+                                        </span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="empty-results">
+            <h3>No Results Available</h3>
+            <p>Your race results will appear here once they have been recorded.</p>
+
+            <a asp-controller="Participant"
+               asp-action="Events"
+               class="btn btn-primary">
+                Explore Events
+            </a>
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-controller="Participant"
+           asp-action="Index"
+           class="btn btn-outline-primary">
+            ← Back to Dashboard
+        </a>
+    </div>
+
+</div>
